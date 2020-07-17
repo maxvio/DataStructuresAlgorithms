@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D71803E624BB4EE200E20973 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D71803E524BB4EE200E20973 /* main.cpp */; };
+		D71803EE24BB4EF400E20973 /* Array.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D71803EC24BB4EF400E20973 /* Array.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		D71803E224BB4EE200E20973 /* Array */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Array; sourceTree = BUILT_PRODUCTS_DIR; };
 		D71803E524BB4EE200E20973 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D71803EC24BB4EF400E20973 /* Array.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Array.cpp; sourceTree = "<group>"; };
+		D71803ED24BB4EF400E20973 /* Array.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Array.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				D71803E524BB4EE200E20973 /* main.cpp */,
+				D71803EC24BB4EF400E20973 /* Array.cpp */,
+				D71803ED24BB4EF400E20973 /* Array.hpp */,
 			);
 			path = Array;
 			sourceTree = "<group>";
@@ -88,7 +93,7 @@
 		D71803DA24BB4EE200E20973 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "viorel maxim";
 				TargetAttributes = {
 					D71803E124BB4EE200E20973 = {
@@ -120,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D71803E624BB4EE200E20973 /* main.cpp in Sources */,
+				D71803EE24BB4EF400E20973 /* Array.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +244,7 @@
 		D71803EA24BB4EE200E20973 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -246,6 +253,7 @@
 		D71803EB24BB4EE200E20973 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
