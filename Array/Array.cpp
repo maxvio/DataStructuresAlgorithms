@@ -31,9 +31,7 @@ Array<T>::Array(int size):size(size){
 
 template<class T>
 Array<T>::~Array(){
-//    std::cout << " -------- destructor ----" << std::endl;
     delete []data;
-    
 }
 
 template<class T> //copy constructor
@@ -160,7 +158,6 @@ void Array<T>::pushValue(T value){
     }else{
         return;
     }
-//    this->length++;
     updateLength(1);
 }
 
@@ -178,7 +175,6 @@ void Array<T>::insertAtIndex(T value, int index){
             }
         }
         this->data[index] = value;
-        //        setLength(1);
         updateLength(1);
     }
 }
@@ -195,7 +191,6 @@ T Array<T>::deleteAtIndex(int index){
     for(int i=index;i<length;i++){
         this->data[i] = this->data[i+1];
     }
-    //    setLength(-1);
     updateLength(-1);
     return value;
 }
@@ -203,7 +198,6 @@ T Array<T>::deleteAtIndex(int index){
 template<class T>
 void Array<T>::append(T value){
     this->data[getLength()] = value;
-    //    setLength(1);
     updateLength(1);
 }
 
@@ -391,8 +385,6 @@ Array<T>& Array<T>::operator* (const Array<T>& a){
 
 template<class T>
 Array<T>& Array<T>::operator/ (const Array<T>& a){
-    
-//    static_cast<float>(a) ----- use it if possible
     if(getSize() == a.size){
         for(int i{0};i<a.length;i++){
             T x = data[i]/a.data[i];
@@ -631,7 +623,6 @@ Array<T>& Array<T>::countSort(){
     count.initialize();
     
     auto temp = (*this);
-//    initialize();
     
     for(auto i{0};i<getLength();i++){
         count.data[temp.data[i]]++;
@@ -676,7 +667,6 @@ Array<T>& Array<T>::shellSort(){
 // --------------- utility tools --------------
 template<class T>
 void Array<T>::show(){
-//    std::cout << "-- getLength() in show = " << getLength() << std::endl;
     for(int i{0};i<getLength();i++){
         std::cout << (T)this->data[i] << " | ";
     }
@@ -686,7 +676,6 @@ void Array<T>::show(){
 
 template<class T>
 void Array<T>::showList(){
-//    std::cout << "-- getLength() in show = " << getLength() << std::endl;
     for(int i{0};i<getLength();i++){
         auto a1 = this->data[i];
         std::cout << this->data[i] << " | ";
@@ -709,10 +698,6 @@ void Array<T>::swap(T &a, T &b){
     temp=a;
     a=b;
     b=temp;
-    
-//    std::cout << "&a = " << &a << std::endl;
-//     std::cout << "*a = " << a << std::endl;
-    
 }
 
 template<class T>

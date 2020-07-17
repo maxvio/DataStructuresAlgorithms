@@ -97,10 +97,7 @@ public:
     void show();
     void showList();
     void showStartPosition(int pos);
-    
     void swap(T &a, T &b);
-   
-
     
 protected:
     int  checkIndex(int i) const;

@@ -232,13 +232,13 @@ int main(int argc, const char * argv[]) {
     
     std::cout << "\n------------- multiplication -------------" << std::endl;
     std::cout << " ------------ result -------------- " << std::endl;
-    //    Array<float> mul = left * right;
-    //    mul.show();
+    Array<float> mul = left * right;
+    mul.show();
     
     std::cout << "\n------------- division -------------" << std::endl;
     std::cout << " ------------ result -------------- " << std::endl;
-    Array<float> div = left / right;
-    div.show();
+//    Array<float> div = left / right;
+//    div.show();
     
     
     
