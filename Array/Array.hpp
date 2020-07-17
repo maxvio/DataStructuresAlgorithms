@@ -18,7 +18,6 @@ private:
     int size;
     int length;
     
-    
 public:
     Array();
     Array(int size);

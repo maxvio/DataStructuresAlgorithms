@@ -691,7 +691,6 @@ void Array<T>::showStartPosition(int pos){
     std::cout << std::endl;
 }
 
-
 template<class T>
 void Array<T>::swap(T &a, T &b){
     T temp;
