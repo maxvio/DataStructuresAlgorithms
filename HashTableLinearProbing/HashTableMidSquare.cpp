@@ -89,13 +89,5 @@ int HashTableMidSquare::searchItem(int key){
         i++;
     }
     
-//    while (getHashTable()[hashDouleFunction(key,i)] != key){
-//        i++;
-//        if (getHashTable()[hashDouleFunction(key,i)] == 0){
-//            return -1;
-//        }
-//    }
-//    return hashDouleFunction(key,i);
-    
     return -1;
 }
