@@ -109,6 +109,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "iterative search = " << s.iterativeBinarySaerch(key,0) << std::endl;
     std::cout << "recursive search = " << s.recursiveBinarySaerch(key,0, s.getLength()) << std::endl;
     std::cout << "is sorted s = " << s.isSorted() << std::endl;
+
     std::cout << "\n------------- Union of two array -------- " << std::endl;
     //    s.show();
     //    arr.pushValue(100);
@@ -207,7 +208,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "\n =================== Arrays basic operations ====================" << std::endl;
     int length = 10;
     
-    float *q1 = new float[length]{3.f, 70.f, 9.f, 100.f, 16.f, 5.f, 12.f, 4.f, 11.f, 2.f};
+    float *q1 = new float[length]{3.0, 70.f, 9.f, 100.f, 16.f, 5.f, 12.f, 4.f, 11.f, 2.f};
     float *q2 = new float[length]{4.f, 3.5f, 2.7, 6.7, 9.0, 10.0, 2.5,15.34,6.f,7.8};
     Array<float> left = Array<float>(length);
     Array<float> right = Array<float>(length);
@@ -215,6 +216,7 @@ int main(int argc, const char * argv[]) {
         left.pushValue(q1[i]);
         right.pushValue(q2[i]);
     }
+    
     std::cout << " ------------ inputs -------------- " << std::endl;
     left.show();
     right.show();
@@ -227,23 +229,113 @@ int main(int argc, const char * argv[]) {
     
     std::cout << "\n------------- substraction -------------" << std::endl;
     std::cout << " ------------ result -------------- " << std::endl;
-    Array<float> diff = left - right;
-    diff.show();
+//    Array<float> diff = left - right;
+//    diff.show();
     
     std::cout << "\n------------- multiplication -------------" << std::endl;
     std::cout << " ------------ result -------------- " << std::endl;
 //    Array<float> mul = left * right;
 //    mul.show();
+    Array<float> first = Array<float>(length);
+    Array<float> second = Array<float>(length);
+    
+    first.pushValue(2);
+    first.pushValue(3);
+    
+    second.pushValue(5);
+    second.pushValue(6);
+    
+    float dotProd = first * second;
+    std::cout << "dot product two vectors = " << dotProd << std::endl;
     
     std::cout << "\n------------- division -------------" << std::endl;
     std::cout << " ------------ result -------------- " << std::endl;
-//    Array<float> div = left / right;
-//    div.show();
+    Array<float> mul = left / right; // element-wise division - ????
+    mul.show();
+    mul.show();
+    mul.showIterator();
+//    for(auto it = mul.begin();it!=mul.end();it++){
+//        std::cout << *it << " / ";
+//    }
+    std::cout <<std::endl;
+//    Array<float>::iterator it = mul.begin();
+//    std::cout << "diff begin = " << *it << std::endl;
+//
+    Array<float>::iterator end = mul.end();
+    auto q11 = end.hasPrev();
+    std::cout << "end = " << *end << std::endl;
+    std::cout << "end has prevu = " << q11 << std::endl;
+    
+    Array<float>::iterator it2 = mul.rbegin();
+//    auto q12 = it2.hasPrev();
+    std::cout << "last= " << *it2 << std::endl;
+//    std::cout << "last has prevu = " << q12 << std::endl;
+    
+    Array<float>::iterator iter=mul.rbegin();
+//    --iter;
+    while (iter!= mul.rend())
+    {
+        std::cout << *(iter--)  << " // ";
+//        --iter;
+    }
+    std::cout << std::endl;
+    std::cout << "----------- add scalar ----------" << std::endl;
+    sh.show();
+    Array<int> res1 = sh + 10;
+    res1.show();
+    std::cout << "----------- substract scalar ----------" << std::endl;
+    res1 = sh - 10;
+    res1.show();
+    std::cout << "----------- multiplication scalar ----------" << std::endl;
+    res1 = sh * 10;
+    res1.show();
+    std::cout << "----------- division scalar ----------" << std::endl;
+    res1 = sh / 10;
+    res1.show();
+    
+    std::cout << "----------- Array norm ----------" << std::endl;
+    std::cout << "norm = " << res1.norm() << std::endl;
+    
+    std::cout << "----------- is unit ----------" << std::endl;
+    Array<float> v = Array<float>(10);
+    v.pushValue(-3/5.f);
+    v.pushValue(4/5.f);
+    
+    v.show();
+    
+    std::cout << "is unit = " << v.isUnit() << std::endl;
     
     
-    
-    
-    std::cout<<std::endl;
+//
+////    auto a1 = it1.hasNext();
+////    std::cout << "it has next = " << *a1 <<std::endl;
+//
+//    auto a2 = it.hasPrev();
+//    std::cout << "it has prev = " << a2 <<std::endl;
+//
+////    std::cout << a1.front() <<std::endl;
+//
+//    for (auto it = mul.begin();it!=mul.end();++it){
+//        std::cout << *it << " ] ";
+//    }
+//    std::cout<<std::endl;
+//    std::cout << "--------- while --------- " << std::endl;
+//
+//    while ((it).hasNext()) {
+//        std::cout << *it << " ] ";
+////        ++it;
+//    }
+//     std::cout<<std::endl;
+//    std::cout<< "------- another for ------" << std::endl;
+//    for (auto it = mul.end();it--!=mul.end();--it){
+//        std::cout << *it << " ]} ";
+//    }
+////    // Iterate over [begin, end) range in reverse
+////    for (iterator = end; iterator-- != begin; ) {
+////      // Process `*iterator`
+////    }
+////
+//    std::cout<<std::endl;
     
     return 0;
 }

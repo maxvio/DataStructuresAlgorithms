@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include "cmath"
 #include "Array.hpp"
 
 //--------------- constructors section -----------------
@@ -17,6 +18,7 @@ Array<T>::Array(){
     for(int i{0};i<size;i++){
         data[i] = (T)0;
     }
+    this->pos = 0;
 }
 
 template<class T>
@@ -71,13 +73,13 @@ Array<T> & Array<T>::operator = (T value){
 }
 
 template<class T>
-const int& Array<T>::operator[](int i) const {
+const T& Array<T>::operator()(int i) const {
     return this->data[checkIndex(i)];
     
 }
 
 template<class T>
-int& Array<T>::operator[](int i){
+T& Array<T>::operator()(int i){
     return this->data[checkIndex(i)];
     
 }
@@ -288,8 +290,16 @@ T Array<T>::getSum(){
 
 
 template<class T>
-double Array<T>::getAverage(){
+float Array<T>::getAverage(){
     return (double)getSum()/getLength();
+}
+
+template<class T>
+float Array<T>::norm(){
+    float sum {0.0};
+    for(auto i{0};i<getLength();i++)
+        sum += pow(data[i],2);
+    return sqrt((float)sum);
 }
 
 // --------------- array operations ---------------------
@@ -372,19 +382,19 @@ Array<T>& Array<T>::operator- (const Array<T>& a){
 }
 
 
+
 template<class T>
-Array<T>& Array<T>::operator* (const Array<T>& a){
+T Array<T>::operator* (const Array<T>& a){
+    T sum {0.0};
     if(getSize() == a.size){
-        for(int i{0};i<a.length;i++){
-            T x = data[i] * a.data[i];
-            data[i] = x;
-        }
+        for(int i{0};i<a.length;i++)
+            sum += (data[i] * a.data[i]);
     }
-    return (*this);
+    return sum;
 }
 
 template<class T>
-Array<T>& Array<T>::operator/ (const Array<T>& a){
+Array<T>& Array<T>::operator/ (const Array<T>& a){ //element-wise division ???
     if(getSize() == a.size){
         for(int i{0};i<a.length;i++){
             T x = data[i]/a.data[i];
@@ -395,7 +405,53 @@ Array<T>& Array<T>::operator/ (const Array<T>& a){
 }
 
 
+
+template<class T>
+Array<T>& Array<T>::productElementWise(const Array<T>& a){ //element-wise multiplication
+    if(getSize() == a.size){
+        
+        for(int i{0};i<a.length;i++){
+            T x = data[i] * a(i);
+            data[i] = x;
+        }
+    }
+    return (*this);
+}
+
 // ---------- operators overloading ---------------------
+
+// ---------- array scalar operation ------------------
+template<class T>
+Array<T>& Array<T>::operator+(const T& rh){
+    for(int i{0};i<length;i++){
+        data[i] += rh;
+    }
+    return (*this);
+}
+
+template<class T>
+Array<T>& Array<T>::operator-(const T& rh){
+    for(int i{0};i<length;i++){
+         data[i] -= rh;
+    }
+    return (*this);
+}
+template<class T>
+Array<T>& Array<T>::operator*(const T& rh){
+    for(int i{0};i<length;i++){
+         data[i] *= rh;
+    }
+    return (*this);
+}
+
+template<class T>
+Array<T>& Array<T>::operator/(const T& rh){
+    for(int i{0};i<length;i++){
+         data[i] /= rh;
+    }
+    return (*this);
+}
+
 
 //---------------- set operation ---------------
 template<class T>
@@ -673,7 +729,16 @@ void Array<T>::show(){
     std::cout << std::endl;
 }
 
-
+template<class T>
+void Array<T>::showIterator(){
+    // C++ 11 style
+    for(auto val : (*this))
+    {
+        std::cout << val << " | ";
+    }
+    std::cout << std::endl;
+}
+       
 template<class T>
 void Array<T>::showList(){
     for(int i{0};i<getLength();i++){
@@ -703,4 +768,11 @@ template<class T>
 void Array<T>::initialize(){
     for (auto i{0};i<getSize();i++)
         this->data[i] = 0;
+}
+
+// -------------- boolean functions ----------
+template<class T>
+int Array<T>::isUnit(){
+    float res = norm();
+    return (res == 1) ? res : -1;
 }
